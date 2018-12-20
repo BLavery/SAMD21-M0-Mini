@@ -149,14 +149,15 @@ make -C mpy-cross
 cd ports/atmel-samd
 make BOARD=arduino_zero
 ```
-Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/build-samd21_mini/firmware.bin, and with the similar bossac call as above it flashed to the board OK.
+Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/__build-arduino_mini/firmware.bin__, and with the similar bossac call as above it flashed to the board OK.
 
-I duplicated the folder ../ports/atmel-samd/boards/arduino_zero into new ../ports/atmel-samd/boards/samd21_mini   
+I duplicated the folder ../ports/atmel-samd/boards/__arduino_zero__ into __new__ ../ports/atmel-samd/boards/__samd21_mini__   
 The 4 files in there I modified slightly to:  
  - remove CircuitPython's TX/RX use of those 2 LEDs
  - rename as Samd21 Mini instead of Arduino Zero  
- My version of these 4 files is available above.
-
+My version of these 4 files is available above. (So, for you, just copy that folder into place inside .../boards.) Positioned as before in .../ports/atmel-samd I compiled the new version:
+``` make samd21_mini ```    
+The new firmware.bin in .../build-samd21_mini can be flashed using bossac as before.
 
 
 
