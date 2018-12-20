@@ -38,7 +38,9 @@ So far I have resisted touching the supplied bootloader, as even circuitPython c
 
 You must install the SAMD support from Tools/Board/Boards Manager, selecting "Arduino SAMD Boards (32-bits Arm Cortex-M0+) by Arduino."
 
-Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Native USB Port)".  Load up the standard Basic/Blink example sketch. Add a line like this   
+Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Native USB Port)".  
+
+Hello World: Load up the standard Basic/Blink example sketch. Add a line like this   
 ```    #define LED_BUILTIN 25  ```   
 Compile. Double-click the board reset button. Upload. See if a LED blinks.
 
@@ -182,7 +184,7 @@ Adafruit CircuitPython 3.1.1-7-g3ace9ea9e-dirty on 2018-12-19; Samd21 Mini with 
 >>> 
 >>> 
 ```   
-We now know how to address our pins.
+We now know how to address our pins. This agrees well with the pin labels on the hardware.
 
 Hello World: In the drive CIRCUITPY create this main.py:
 ```
@@ -202,7 +204,7 @@ while 1:
     time.sleep(1)
 
 ```   
-We have 2 blinking LEDs.
+We should have 2 blinking LEDs.
 
 
 
