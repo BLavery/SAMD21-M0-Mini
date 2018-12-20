@@ -40,11 +40,17 @@ You must install the SAMD support from Tools/Board/Boards Manager, selecting "Ar
 
 Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Native USB Port)".  Load up the standard Basic/Blink example sketch. Add a line like this   
 ```    #define LED_BUILTIN 25  ```   
-Compile and upload. See if a LED blinks.
+Compile. Double-click the board reset button. Upload. See if a LED blinks.
 
-Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them. But what pin or GPIO number?
+Let's explain a bit:  
 
-For this board, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.   
+1. the Arduino bootloader uses double click on reset button to enter flash upload mode. Single reset enters normal running mode. No boot0 jumpers like STM32 uses, are used on the SAMD. 
+
+2. The "DFU" mode of USB upload is included in the Arduino install. 
+
+3. The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them. But what pin or GPIO number?
+
+4. For this board, reference the pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.   
 D0  PA11 UART-RX    
 D1  PA10 UART-TX        
 D2  PA14        
