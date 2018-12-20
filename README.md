@@ -94,7 +94,7 @@ If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive a
 But we have the arduino bootloader. Dragging a .dfu isn't available, but bossac, the serial transfer utility, is hidden away inside our Arduino IDE package. We can manually use that to flash the CircuitPython. We just need the ".bin" version of firmware not the usual ".dfu" format.  
 
 Reference:  https://learn.adafruit.com/welcome-to-circuitpython/non-uf2-installation   
-Don't believe that you need to install bossac. We already have it! (Somewhere!)  
+Don't believe the advice that you need to install bossac. We already have it! (Somewhere!)  
 And here is where I got the .bin image:  https://github.com/adafruit/circuitpython/releases/tag/3.1.1
 
 I have Linux Mint. Here is how I flashed:    
