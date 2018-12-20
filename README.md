@@ -94,15 +94,31 @@ Don't believe that you need to install bossac. Your arduino install from above a
 And here is where I got the .bin image:  https://github.com/adafruit/circuitpython/releases/tag/3.1.1
 
 I have Linux Mint. Here is how I flashed:    
-```__/opt/arduino-1.8.7/portable/packages/arduino/tools/bossac/1.7.0/bossac -i -d -e -w -v /home/brian/Documents/Bots/Cortex-M-STM32-SAMD/SAMD21-M0-Mini/adafruit-circuitpython-arduino_zero-3.1.1.bin -R__```    
-In summary, this is just    
-```bossac  (options)  firmware.bin -R```     
-See where I found my bossac utility in my Arduino install.  Use your own full path.   
-Note the exact ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
-The -R at the end simply reset the MCU into run mode.
+Double-click Reset.    
+```/opt/arduino-1.8.7/portable/packages/arduino/tools/bossac/1.7.0/bossac -i -d -e -w -v /home/brian/Documents/Bots/Cortex-M-STM32-SAMD/SAMD21-M0-Mini/adafruit-circuitpython-arduino_zero-3.1.1.bin -R```    
+In summary, this is just   
+```bossac  (some options)  firmware.bin -R```    
 
-I did it again on Windows10. It looked like this:    
-__C:\Users\Brian\Appdata\Local\Arduino15\packages\arduino\tools\bossac\1.7.0\bossac.exe -i -d -e -w -v adafruit-circuitpython-arduino_zero-3.1.1.bin -R__
+1. I deduced the full command and options by setting arduino to Preferences/Verbose during Upload, and doing a test sketch upload!  And by reading the help out of bossac.
+2. Note where I found my bossac utility in my Arduino install.  Use your own full path for your bossac.   
+3. Note the exact ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
+4. The -R at the end simply reset the MCU into run mode.
+5. I let bossac auto-find its com port.
+
+I did it all again on Windows10. It looked like this:    
+```C:\Users\Brian\Appdata\Local\Arduino15\packages\arduino\tools\bossac\1.7.0\bossac.exe -i -d -e -w -v adafruit-circuitpython-arduino_zero-3.1.1.bin -R```
+
+Wow. This board now thinks it's an arduino zero running circuitpython. A CIRCUITPY drive appears at my PC. If I edit or drag a "main.py" file there, it will run.
+
+Run a serial terminal. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and the python interpreter prompt appears. Let's do some testing preparatory to making a simple "blink" script:
+```
+import board, microcontroller, digitalio
+help(board)
+help(microcontroller.pin)
+
+led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
+```
+We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LED s available at all.   
 
 
 
