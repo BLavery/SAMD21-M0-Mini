@@ -81,8 +81,10 @@ A5  PB02
 
 ## Adafruit's CircuitPython:
 
-CircuitPython is Adafruit's fork of the MicroPython project for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)   
-https://circuitpython.readthedocs.io/en/3.x/docs/index.html     
+CircuitPython is Adafruit's fork of the MicroPython project for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)  
+
+https://circuitpython.readthedocs.io/en/3.x/docs/index.html   
+
 CircuitPython is supplied as a binary file that needs flashing once. Thereafter your ".py" scripts are loaded a different way. Therefore, the following once-off manual install of the binary of CircuitPython can, like a childbirth, be later forgotten.
 
 If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive appear on our PC, and drag the "firmware.dfu" of the circuitpython to the BOOT drive. Installed! 
@@ -90,7 +92,7 @@ If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive a
 But we have the arduino bootloader. Dragging a .dfu isn't available, but bossac, the serial transfer utility, is hidden away inside our Arduino IDE package. We can manually use that to flash the CircuitPython. We just need the ".bin" version of firmware not the usual ".dfu" format.  
 
 Reference:  https://learn.adafruit.com/welcome-to-circuitpython/non-uf2-installation   
-Don't believe that you need to install bossac. Your arduino install from above already has it!   
+Don't believe that you need to install bossac. We already have it! (Somewhere!)  
 And here is where I got the .bin image:  https://github.com/adafruit/circuitpython/releases/tag/3.1.1
 
 I have Linux Mint. Here is how I flashed:    
@@ -102,15 +104,15 @@ In summary, this is just
 1. I deduced the full command and options by setting arduino to Preferences/Verbose during Upload, and doing a test sketch upload!  And by reading the help out of bossac.
 2. Note where I found my bossac utility in my Arduino install.  Use your own full path for your bossac.   
 3. Note the exact ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
-4. The -R at the end simply reset the MCU into run mode.
+4. The -R at the end simply resets the MCU into run mode.
 5. I let bossac auto-find its com port.
 
 I did it all again on Windows10. It looked like this:    
 ```C:\Users\Brian\Appdata\Local\Arduino15\packages\arduino\tools\bossac\1.7.0\bossac.exe -i -d -e -w -v adafruit-circuitpython-arduino_zero-3.1.1.bin -R```
 
-Wow. This board now thinks it's an arduino zero running circuitpython. A CIRCUITPY drive appears at my PC. If I edit or drag a "main.py" file there, it will run.
+Wow. This board now thinks it's an arduino zero running circuitpython. __A CIRCUITPY drive appears__ at my PC. If I edit or drag a "main.py" file there, it will run.
 
-Run a serial terminal. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and the python interpreter prompt appears. Let's do some testing preparatory to making a simple "blink" script:
+Run a serial terminal. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and __the python interpreter prompt appears__. Let's do some testing preparatory to making a simple "blink" script:
 ```
 import board, microcontroller, digitalio
 help(board)
@@ -118,7 +120,7 @@ help(microcontroller.pin)
 
 led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
 ```
-We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LED s available at all.   
+FAIL. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
 
 
 
