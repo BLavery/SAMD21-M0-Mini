@@ -112,7 +112,7 @@ I did it all again on Windows10. It looked like this:
 
 Wow. This board now thinks it's an arduino zero running circuitpython. __A CIRCUITPY drive appears__ at my PC. If I edit or drag a "main.py" file there, it will run.
 
-Run a serial terminal. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and __the python interpreter prompt appears__. Let's do some testing preparatory to making a simple "blink" script:
+Run a serial terminal on the PC. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and __the python interpreter prompt appears__. Let's do some testing preparatory to making a simple "blink" script:
 ```
 import board, microcontroller, digitalio
 help(board)
@@ -121,6 +121,19 @@ help(microcontroller.pin)
 led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
 ```
 FAIL. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
+
+With that restriction, we have Arduino Zero CircuitPython all up and running.
+
+Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPython as often as you wish.
+
+## Recompiling CircuitPython:
+
+OK, so we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
+
+It's actually not too difficult. Just a bit tech-y. My first attempt on my Debian Mint PC had a toolchain clash with stuff I had already (Arduino recompiling!). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS.
+
+tbc ...
+
 
 
 
