@@ -153,11 +153,37 @@ Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/po
 
 I duplicated the folder ../ports/atmel-samd/boards/__arduino_zero__ into __new__ ../ports/atmel-samd/boards/__samd21_mini__   
 The 4 files in there I modified slightly to:  
- - remove CircuitPython's TX/RX use of those 2 LEDs
+ - remove CircuitPython's TX/RX indicator use of those 2 LEDs
+ - give the 2 LEDs names: board.LED1 and board.LED2
  - rename as Samd21 Mini instead of Arduino Zero  
-My version of these 4 files is available above. (So, for you, just copy that folder into place inside .../boards.) Positioned as before in .../ports/atmel-samd I compiled the new version:
+ 
+My version of these 4 files is available above. (So, for you, just copy that folder into place inside .../boards.) Positioned as before in .../ports/atmel-samd I compiled the new version:  
 ``` make samd21_mini ```    
 The new firmware.bin in .../build-samd21_mini can be flashed using bossac as before.
+
+In the drive CIRCUITPY on our "Samd21 Mini" CircuitPython board, put this main.py:
+```
+import time, digitalio, microcontroller, board
+led1 = digitalio.DigitalInOut(board.LED1)
+# led1 = digitalio.DigitalInOut(microcontroller.pin.PB03) # THIS WOULD WORK TOO
+led1.direction = digitalio.Direction.OUTPUT
+led1.value = True
+led2 = digitalio.DigitalInOut(board.LED2)
+# led2 = digitalio.DigitalInOut(microcontroller.pin.PA27)
+led2.direction = digitalio.Direction.OUTPUT
+led2.value = False
+while 1:
+    led1.value = not led1.value
+    time.sleep(1)
+    led2.value = not led2.value
+    time.sleep(1)
+
+```   
+We have 2 blinking LEDs.
+
+
+
+
 
 
 
