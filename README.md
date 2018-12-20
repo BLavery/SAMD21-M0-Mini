@@ -128,7 +128,7 @@ Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPy
 
 ## Recompiling CircuitPython:
 
-OK, so we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
+OK, so if we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
 
 It's actually not too difficult. Just a bit tech-y. My first attempt on my Debian Mint PC had a toolchain clash with stuff I had already (MicroPython recompiling!). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS.
 
@@ -151,7 +151,9 @@ make BOARD=arduino_zero
 ```
 Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/__build-arduino_mini/firmware.bin__, and with the similar bossac call as above it flashed to the board OK.
 
-I duplicated the folder ../ports/atmel-samd/boards/__arduino_zero__ into __new__ ../ports/atmel-samd/boards/__samd21_mini__   
+This was all rather painless. The hardest step was transferring the firmware.bin file back to my usual linux desktop for flashing!
+
+Now, to fork the arduino_mini board into a new one. I duplicated the folder ../ports/atmel-samd/boards/__arduino_zero__ into __new__ ../ports/atmel-samd/boards/__samd21_mini__   
 The 4 files in there I modified slightly to:  
  - remove CircuitPython's TX/RX indicator use of those 2 LEDs
  - give the 2 LEDs names: board.LED1 and board.LED2
@@ -161,7 +163,28 @@ My version of these 4 files is available above. (So, for you, just copy that fol
 ``` make samd21_mini ```    
 The new firmware.bin in .../build-samd21_mini can be flashed using bossac as before.
 
-In the drive CIRCUITPY on our "Samd21 Mini" CircuitPython board, put this main.py:
+Start up the board and your serial terminal to talk with it, as before.  CTRL-C / Enter, or perhaps just Enter. See the list of pin named like this:  
+```
+Press any key to enter the REPL. Use CTRL-D to reload.
+Adafruit CircuitPython 3.1.1-7-g3ace9ea9e-dirty on 2018-12-19; Samd21 Mini with samd21g18
+>>> 
+>>> import board
+>>> help(board)
+  A0 -- board.A0
+  A1 -- board.A1
+  A2 -- board.A2
+  (etc)
+  D5 -- board.D5
+  D6 -- board.D6
+  (etc)
+  LED1 -- board.LED1
+  LED2 -- board.LED2
+>>> 
+>>> 
+```   
+We now know how to address our pins.
+
+Hello World: In the drive CIRCUITPY create this main.py:
 ```
 import time, digitalio, microcontroller, board
 led1 = digitalio.DigitalInOut(board.LED1)
