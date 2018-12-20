@@ -44,9 +44,9 @@ Compile and upload. See if a LED blinks.
 
 Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/TX indicators, so we can re-employ them. But what pin or GPIO number?
 
-For this board, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.
-D0  PA11 UART-RX 
-D1  PA10 UART-TX     
+For this board, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.   
+D0  PA11 UART-RX    
+D1  PA10 UART-TX        
 D2  PA14        
 D3  PA09        
 D4  PA08        
