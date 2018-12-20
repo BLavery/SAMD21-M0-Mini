@@ -27,6 +27,7 @@ Need more info (I'm suggesting you __don't__) on getting these two bootloaders?
  - https://github.com/arduino/ArduinoCore-samd/tree/master/bootloaders/zero
  - https://cdn-learn.adafruit.com/downloads/pdf/compiling-m0-atsamd21-bootloader.pdf 
  
+ 
  - https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/uf2-bootloader-details
  - https://github.com/adafruit/uf2-samdx1  
  - https://github.com/adafruit/uf2-samdx1/releases/tag/v2.0.0-adafruit.7 
@@ -35,7 +36,38 @@ So far I have resisted touching the supplied bootloader, as circuitPython can be
 
 ## Arduino IDE:
 
-...
+You must install the SAMD support from Tools/Board/Boards Manager, selecting "Arduino SAMD Boards (32-bits Arm Cortex-M0+) by Arduino."
+
+Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Native USB Port)".  Load up the standard Basic/Blink example sketch. Add a line like this 
+```    #define LED_BUILTIN 25```
+Compile and upload. See if a LED blinks.
+
+Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/TX indicators, so we can re-emply them. But what pin or GPIO number?
+
+In Arduino-Samd, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.
+
+D0  PA11 RX     D11 PA16         ICSP: 1 PA12 MISO D22 
+
+D1  PA10 TX     D12 PA19               2      3v   
+
+D2  PA14        D13 PA17        CHECK  4 PB10 MOSI D23   
+
+D3  PA09        A0  PA02        THESE  3 PB11 SCK  D24  
+
+D4  PA08        A1  PB08        PIN#S  5      RESET  
+
+D5  PA15        A2  PB09               6      GND  
+
+D6  PA20        A3  PA04         D25 PB03 LED2  
+
+D7  PA21        A4  PA05         D26 PA27 LED3  
+
+D8  PA06        A5  PB02         D44 PA30 SWCLK   
+
+D9  PA07        D20 PA22 SDA     D45 PA31 SWDIO
+
+D10 PA18        D21 PA23 SCL  
+
 
 ## Adafruit's CircuitPython:
 
