@@ -32,7 +32,7 @@ Need more info (I'm suggesting you __don't__) on getting these two bootloaders?
  - https://github.com/adafruit/uf2-samdx1  
  - https://github.com/adafruit/uf2-samdx1/releases/tag/v2.0.0-adafruit.7 
 
-So far I have resisted touching the supplied bootloader, as even circuitPython can be managed, as we see below, while leaving the arduino one there. 
+So far I have resisted touching the supplied bootloader, as even circuitPython can be managed, as we see below, while leaving the arduino bootloader there. 
 
 ## Arduino IDE:
 
