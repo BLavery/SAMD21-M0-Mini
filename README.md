@@ -23,7 +23,7 @@ On the board as supplied, a bootloader is installed in flash. It's an "arduino-z
 
 But there is an alternative Adafruit bootloader more cleanly matched to Adafruit's circuitPython. The Adafruit UF2 flash bootloader allows reflashing by simple file copy or drag to a flash drive.
 
-Need more info on getting these two bootloaders?
+Need more info (I'm suggesting you __don't__) on getting these two bootloaders?
  - https://github.com/arduino/ArduinoCore-samd/tree/master/bootloaders/zero
  - https://cdn-learn.adafruit.com/downloads/pdf/compiling-m0-atsamd21-bootloader.pdf 
  
