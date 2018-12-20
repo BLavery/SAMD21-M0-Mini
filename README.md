@@ -42,32 +42,36 @@ Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Nati
 ```    #define LED_BUILTIN 25```
 Compile and upload. See if a LED blinks.
 
-Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/TX indicators, so we can re-emply them. But what pin or GPIO number?
+Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/TX indicators, so we can re-employ them. But what pin or GPIO number?
 
-In Arduino-Samd, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.
-
-D0  PA11 RX     D11 PA16         ICSP: 1 PA12 MISO D22 
-
-D1  PA10 TX     D12 PA19               2      3v   
-
-D2  PA14        D13 PA17        CHECK  4 PB10 MOSI D23   
-
-D3  PA09        A0  PA02        THESE  3 PB11 SCK  D24  
-
-D4  PA08        A1  PB08        PIN#S  5      RESET  
-
-D5  PA15        A2  PB09               6      GND  
-
-D6  PA20        A3  PA04         D25 PB03 LED2  
-
-D7  PA21        A4  PA05         D26 PA27 LED3  
-
-D8  PA06        A5  PB02         D44 PA30 SWCLK   
-
-D9  PA07        D20 PA22 SDA     D45 PA31 SWDIO
-
-D10 PA18        D21 PA23 SCL  
-
+For this board, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.
+D0  PA11 UART-RX 
+D1  PA10 UART-TX     
+D2  PA14        
+D3  PA09        
+D4  PA08        
+D5  PA15        
+D6  PA20        
+D7  PA21        
+D8  PA06        
+D9  PA07        
+D10 PA18         
+D11 PA16         
+D12 PA19       
+D13 PA17       
+A0  PA02       
+A1  PB08        
+A2  PB09        
+A3  PA04       
+A4  PA05       
+A5  PB02       
+D20 PA22 SDA  
+D21 PA23 SCL         
+D22 PA12 MISO ICSP  
+D23 PB10 MOSI ICSP
+D24 PB11 SCK  ICSP  
+D25 PB03 LED2            
+D26 PA27 LED3    
 
 ## Adafruit's CircuitPython:
 
