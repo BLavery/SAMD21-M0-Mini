@@ -17,7 +17,7 @@ This set of notes looks at the first two of these. If you are doing your own sui
 
 ## Bootloader:
 
-From the factory, the MCU chip's ROM-based bootloader seems to support writing to flash only by ICE/SWD/Jlink. For hobby or low level use, flashing every sketch or program solely that way is in the "too much trouble" basket. Therefore a flash-based secondary bootloader is usually installed once, and left alone thereafter. The flash-based bootloader should offer easier ways to reflash your software.
+From the factory, the MCU chip's ROM-based bootloader seems to support writing to flash only by ICE/SWD/Jlink. For hobby or low level use, flashing every sketch or program solely that way, on a tiny non-hobby connector, is in the "too much trouble" basket. Therefore a flash-based secondary bootloader is usually installed once, and left alone thereafter. The flash-based bootloader should offer easier ways to reflash your software.
 
 On the board as supplied, a bootloader is installed in flash. It's an "arduino-zero compatible" board, so the arduino-SAMD bootloader is included. This allows programming your sketch by DFU on the USB port, and the Arduino IDE has drivers for that built in.
 
@@ -42,7 +42,7 @@ Then actually select the board: Tools/Board = Arduino SAMD / "Arduino Zero (Nati
 ```    #define LED_BUILTIN 25  ```   
 Compile and upload. See if a LED blinks.
 
-Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/TX indicators (see above), so we can re-employ them. But what pin or GPIO number?
+Let's explain a bit:  The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them. But what pin or GPIO number?
 
 For this board, reference pins as 0-26 or A0-A5.  Not D25, not PB03 or PB3.   
 D0  PA11 UART-RX    
