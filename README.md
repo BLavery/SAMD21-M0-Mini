@@ -206,6 +206,12 @@ while 1:
 ```   
 We should have 2 blinking LEDs.
 
+## Related:
+
+For my notes on the STM32F407VG with micropython, see https://github.com/BLavery/STM32F407VG-Micropython  
+For my notes on the STM32F407VG with Arduino, see https://github.com/BLavery/STM32F407VG-Arduino  
+For my notes on the much STM32F030F4P6, see https://github.com/BLavery/STM32F030F4P6-Arduino  
+For my notes on the STM32F103 "BluePill", see https://github.com/BLavery/STM32F103-Arduino  
 
 
 
