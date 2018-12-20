@@ -130,9 +130,32 @@ Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPy
 
 OK, so we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
 
-It's actually not too difficult. Just a bit tech-y. My first attempt on my Debian Mint PC had a toolchain clash with stuff I had already (Arduino recompiling!). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS.
+It's actually not too difficult. Just a bit tech-y. My first attempt on my Debian Mint PC had a toolchain clash with stuff I had already (MicroPython recompiling!). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS.
 
-tbc ...
+The detailed instructions from Adafruit are here: https://learn.adafruit.com/building-circuitpython, and my steps were:
+
+```
+sudo apt update
+sudo apt install build-essential, git, gettext
+sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
+sudo apt update
+sudo apt install gcc-arm-embedded
+git clone https://github.com/adafruit/circuitpython.git
+cd circuitpython
+git checkout 3.x
+git submodule sync
+git submodule update --init –recursive
+make -C mpy-cross
+cd ports/atmel-samd
+make BOARD=arduino_zero
+```
+Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/build-samd21_mini/firmware.bin, and with the similar bossac call as above it flashed to the board OK.
+
+I duplicated the folder ../ports/atmel-samd/boards/arduino_zero into new ../ports/atmel-samd/boards/samd21_mini   
+The 4 files in there I modified slightly to:  
+ - remove CircuitPython's TX/RX use of those 2 LEDs
+ - rename as Samd21 Mini instead of Arduino Zero  
+ My version of these 4 files is available above.
 
 
 
