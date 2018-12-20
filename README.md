@@ -163,7 +163,7 @@ The 4 files in there I modified slightly to:
  
 My version of these 4 files is available above. (So, for you, just copy that folder into place inside .../boards.) Positioned as before in .../ports/atmel-samd I compiled the new version:  
 ``` make samd21_mini ```    
-The new firmware.bin in .../build-samd21_mini can be flashed using bossac as before. I have placed a copy of the "samd21_mini" build above. It's still simply called firmware.bin.
+The new firmware.bin in .../build-samd21_mini can be flashed using bossac as before. __I have placed a copy of the "samd21_mini" build above.__ It's still simply called firmware.bin.
 
 Start up the board and your serial terminal to talk with it, as before.  CTRL-C / Enter, or perhaps just Enter. See the list of pin named like this:  
 ```
