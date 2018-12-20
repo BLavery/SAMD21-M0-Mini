@@ -3,7 +3,7 @@ Notes on using the Chinese "SAMD21 M0-Mini" board.<img align="right" src="images
 
 ## Hardware:
 
-This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, and is advertised as "Arduino Zero" compatible.
+This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible.
 In hardware, the Arduino's user LED on D13/PA17 is not fitted, although the PCB design seems to have intended it. A schematic image is attached above, amended to be as accurate as I believe. 
 
 There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx ones are toggled (__in software__) when TX or RX data is happening. The arduino bootloader includes driver code to do this winking. Whether your application similarly drives these 2 Leds, "depends...".
