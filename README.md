@@ -55,7 +55,7 @@ Let's explain a bit:
 
 3. The regular user LED is missing. So we choose one of the TX/RX LEDs. For the moment, the Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them.
 
-4. But what pin or GPIO number? For this board, reference the pins as 0-26 or A0-A5.  Not D25, nor PB03 or PB3.   
+4. But what pin or GPIO number? For this board, reference the pins as 0-26 or A0-A5.  Not D25, nor PB03 or PB3.    
 0  PA11 UART-RX    
 1  PA10 UART-TX        
 2  PA14        
@@ -111,7 +111,7 @@ The regular "Serial" exists in software, but its pins PB22/PB23 are not availabl
 
 ## Adafruit's CircuitPython:
 
-CircuitPython is Adafruit's fork of the MicroPython project for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)  
+CircuitPython is Adafruit's fork/variant of the MicroPython project for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)  
 
 https://circuitpython.readthedocs.io/en/3.x/docs/index.html   
 
