@@ -4,9 +4,12 @@ Notes on using the Chinese "SAMD21 M0-Mini" board.<img align="right" src="images
 ## Hardware:
 
 This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible.
+
 In hardware, the Arduino's user LED on D13/PA17 is not fitted, although the PCB design seems to have intended it. A schematic image is attached above, amended to be as accurate as I believe. 
 
 There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx ones are toggled (__in software__) when TX or RX data is happening. The arduino bootloader includes driver code to do this winking. Whether your application similarly drives these 2 Leds, "depends...". More on that below.
+
+Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware.  
 
 The obvious application types available are 
  - arduino sketch
@@ -80,6 +83,30 @@ A5  PB02
 24 PB11 SCK  ICSP      
 25 PB03 LED1               
 26 PA27 LED2      
+
+If you want to use Arduino's terminal (ie serial via the USB connector), it's done like this:
+```
+void setup() {
+  SerialUSB.begin(9600);  // the baudrate is ignored
+}
+void loop() {
+  delay(1000);
+  SerialUSB.println("Test SerialUSB");
+)
+```
+
+There is also a "Serial1" connection available like this, using a TTL serial adapter at pins D0/D1:
+```
+void setup() {
+  Serial1.begin(9600);  
+}
+void loop() {
+  delay(1000);
+  Serial1.println("Test Serial1");
+)
+```
+"Serial" exists in software, but its pins PB22/PB23 are not available to us.
+
 
 ## Adafruit's CircuitPython:
 
