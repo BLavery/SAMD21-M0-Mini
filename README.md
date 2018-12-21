@@ -176,7 +176,7 @@ git clone https://github.com/adafruit/circuitpython.git
 cd circuitpython
 git checkout 3.x
 git submodule sync
-git submodule update --init –recursive
+git submodule update --init --recursive
 make -C mpy-cross
 cd ports/atmel-samd
 make BOARD=arduino_zero
