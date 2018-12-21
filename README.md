@@ -20,9 +20,9 @@ This set of notes looks at the first two of these. If you are doing your own sui
 
 ## Bootloader:
 
-From the factory, the MCU chip's ROM-based bootloader seems to support writing to flash only by ICE/SWD/Jlink. For hobby or low level use, flashing every sketch or program solely that way, on a tiny non-hobby connector, is in the "too much trouble" basket. Therefore a flash-based secondary bootloader is usually installed once, and left alone thereafter. The flash-based bootloader should offer easier ways to reflash your software.
+From the factory, the MCU chip's ROM-based bootloader seems to support writing to flash only by ICE/SWD/Jlink. For hobby or low level use, flashing every sketch or program solely that way, on a tiny non-hobby connector, is in the "too much trouble" basket. Therefore a flash-based secondary bootloader is usually installed once, hopefuly by the board manufacturer, and left alone thereafter. The flash-based bootloader should offer easier ways to reflash your software.
 
-On the board as supplied, a bootloader is installed in flash. It's an "arduino-zero compatible" board, so the arduino-SAMD bootloader is included. This allows programming your sketch by the USB port, and the Arduino IDE has drivers for that built in. Serial/bossac on either USB or UART TX/RX pins???
+On the board as supplied, a bootloader __is__ installed in flash. It's an "arduino-zero compatible" board, so the arduino-SAMD bootloader is included. This allows programming your sketch by the USB port, and the Arduino IDE has drivers for that built in. Serial/bossac on either USB or UART TX/RX pins???
 
 But there is an alternative Adafruit bootloader more cleanly matched to Adafruit's circuitPython. The Adafruit UF2 flash bootloader allows an additional mode of reflashing, by simple file copy or drag to a flash drive.
 
