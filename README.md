@@ -53,7 +53,7 @@ Let's explain a bit:
 
 2. The serial/bossac mode of USB upload is included in the Arduino install. 
 
-3. The regular user LED is missing. So we choose one of the TX/RX LEDs. The Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them.
+3. The regular user LED is missing. So we choose one of the TX/RX LEDs. For the moment, the Arduino sketch is NOT otherwise driving these as TX/RX indicators (see above), so we can re-employ them.
 
 4. But what pin or GPIO number? For this board, reference the pins as 0-26 or A0-A5.  Not D25, nor PB03 or PB3.   
 0  PA11 UART-RX    
@@ -94,8 +94,9 @@ void loop() {
   SerialUSB.println("Test SerialUSB");
 )
 ```
+SerialUSB does seem to automatically use the LEDs as TX/RX indicators. But we can still apparently get access and control the LEDs ourself. I haven't looked closely at how these might interact! 
 
-There is also a "Serial1" connection available like this, using a TTL serial adapter at pins D0/D1:
+There is also a "Serial1" connection available like this, using a 3V TTL uart adapter (eg CP2102) at pins D0/D1:
 ```
 void setup() {
   Serial1.begin(9600);  
@@ -105,7 +106,7 @@ void loop() {
   Serial1.println("Test Serial1");
 )
 ```
-"Serial" exists in software, but its pins PB22/PB23 are not available to us.
+The regular "Serial" exists in software, but its pins PB22/PB23 are not available to us.
 
 
 ## Adafruit's CircuitPython:
