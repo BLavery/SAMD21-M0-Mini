@@ -135,8 +135,8 @@ In summary, this is just
 
 1. I deduced the full command and options by setting arduino to Preferences/Verbose during Upload, and doing a test sketch upload!  And by reading the help out of bossac.
 2. Note where I found my bossac utility in my Arduino install.  Use your own full path for your bossac.   
-3. Note the exact ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
-4. The -R at the end simply resets the MCU into run mode.
+3. Note the exact firmware ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
+4. The -R at the end simply resets the MCU into run mode, without reset button.
 5. I let bossac auto-find its com port.
 
 I did it all again on Windows10. It looked like this:    
