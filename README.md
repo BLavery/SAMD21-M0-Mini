@@ -183,7 +183,7 @@ make BOARD=arduino_zero
 ```
 Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/__build-arduino_mini/firmware.bin__, and with the similar bossac call as above it flashed to the board OK.
 
-This was all rather painless. The hardest step was transferring the firmware.bin file back to my usual linux desktop for flashing!
+This was all rather painless. (The hardest step was transferring the firmware.bin file back to my usual linux desktop for flashing!)
 
 Now, to fork the arduino_mini board into a new one. I duplicated the folder ../ports/atmel-samd/boards/__arduino_zero__ into __new__ ../ports/atmel-samd/boards/__samd21_mini__   
 The 4 files in there I modified slightly to:  
