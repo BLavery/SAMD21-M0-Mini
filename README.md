@@ -1,5 +1,5 @@
 # SAMD21 M0-Mini (branded Wemos)
-Notes on using the Chinese "SAMD21 M0-Mini" board. <img align="right" src="images/mini.png">I've seen the brandings Wemos and RobotDyn.
+Notes on using the Chinese $14 "SAMD21 M0-Mini" board. <img align="right" src="images/mini.png">I've seen the brandings Wemos and RobotDyn.
 
 ## Hardware:
 
