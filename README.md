@@ -49,7 +49,7 @@ Compile. Double-click the board reset button. Upload. See if a LED blinks.
 
 Let's explain a bit:  
 
-1. The Arduino bootloader uses double click on reset button to enter flash upload mode. Single reset enters normal running mode. (Boot0 jumpers, like STM32 uses, are not used on the SAMD.) 
+1. The Arduino bootloader uses double click on reset button to enter flash upload mode. Single reset enters normal running mode. (Boot0/1 jumpers, like STM32 uses, are not used on the SAMD.) 
 
 2. The serial/bossac mode of USB upload is included in the Arduino install. 
 
