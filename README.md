@@ -82,7 +82,9 @@ A5  PB02
 23 PB10 MOSI ICSP   
 24 PB11 SCK  ICSP      
 25 PB03 LED1               
-26 PA27 LED2      
+26 PA27 LED2     
+
+(To be checked: I suspect there might be a numbering issue on pins of ICSP connector. Not sure why there is a ICSP connector on this board anyway, exc to give access to spare MCU pins.)
 
 If you want to use Arduino's terminal (ie serial via the USB connector), it's done like this:
 ```
