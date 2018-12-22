@@ -271,7 +271,7 @@ Compile and load that (this is ordinary arduino stuff now). Bingo. UF2 bootloade
 
 The new bootloader supports both 
  - regular arduino sketch uploads ("bossac" / serial). So we lose no functionality.
- - drag&drop or file copy to the new drive ("ZEROBOOT", or I renamed that to "SAMBOOT" in 
+ - drag&drop or file copy to the new drive "ZEROBOOT" (or I renamed that to "SAM21BOOT" in 
  the config) that appears on the USB when the board is in bootloader flashing mode. This is for simple 
  flashing of the circuitpython .uf2 file. This is the new functionality.
 
