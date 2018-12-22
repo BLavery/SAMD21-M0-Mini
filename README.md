@@ -278,7 +278,9 @@ The new bootloader supports both
 New bootloader runs if no sketch or circuitpython is flashed, or if we double-click reset button. Assuming we used the corrected 
 bootloader with the correct LED pin, bootloader is indicated by a soft-pulsing user LED. And the SAMBOOT drive appears at my PC.
 
-Using the new bootloader crossing over to circuitpython from arduino use is as easy as copying the circuitpython UF2 image file. (This is NOT the bootloader file.)
+Using the new bootloader, to cross over to circuitpython from arduino use, is as easy as just copying the circuitpython UF2 image file. (This is NOT the bootloader file.)
+
+That magic .INO file I compiled? That changes the bootloader? I have placed it above.
 
 When circuitpython starts, the CIRCUITPY drive and the REPL by serial terminal are available just like the harder way earlier.
 
