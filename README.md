@@ -9,7 +9,9 @@ This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 2
 
 There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx ones are toggled (__in software__) when TX or RX data is happening. The arduino bootloader includes driver code to do this winking. Whether your application similarly drives these 2 Leds, "depends...". More on that below.
 
-Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing).  
+I propose that a user LED (or two?) is WAY more useful than TX/RX indicator LEDs. 
+
+Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing). This is no big deal.
 
 ## What software?
 
