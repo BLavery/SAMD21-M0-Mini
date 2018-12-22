@@ -243,7 +243,7 @@ We should have 2 blinking LEDs.
 While we are on a roll recompiling, can we after all the misgivings above 
 get a "proper" circuitpython bootloader?
 
-Go back to the ubunti VM.
+Go back to the ubunti VM. And research those bootloader references up above.
 
 ```
 git clone https://github.com/adafruit/uf2-samdx1
@@ -253,8 +253,7 @@ make all BOARD=zero
 We now have built the bootloader, in several formats, for the arduino zero. How easy was that?
 
 Is it good for our board? Pretty close. But let's clone that "zero" profile, 
-and correct the user LED to the right pin 
-for our Samd21 Mini.
+and correct the user LED to the right pin for our Samd21 Mini.
 Duplicate .../boards/zero folder to ../boards/samd21mini. 
 There are only two configuration files in there.
 Correct the led:  ```#define LED_PIN PIN_PA27```. Undefine both LED_TX_PIN and LED_RX_PIN
@@ -275,7 +274,15 @@ The new bootloader supports both
  - drag&drop or file copy to the new drive ("ZEROBOOT", or I renamed that to "SAMBOOT" in 
  the config) that appears on the USB when the board is in bootloader flashing mode. This is for simple 
  flashing of the circuitpython .uf2 file. This is the new functionality.
- 
+
+New bootloader runs if no sketch or circuitpython is flashed, or if we double-click reset button. Assuming we used the corrected 
+bootloader with the correct LED pin, bootloader is indicated by a soft-pulsing user LED. And the SAMBOOT drive appears at my PC.
+
+Using the new bootloader crossing over to circuitpython from arduino use is as easy as copying the circuitpython UF2 image file. (This is NOT the bootloader file.)
+
+When circuitpython starts, the CIRCUITPY drive and the REPL by serial terminal are available just like the harder way earlier.
+
+Can we revert to the arduino bootloader we knew? Only with a lot more effort that the simple process we have just used. But why go back? We lost no functionality. Arduino still works.
 
  
 ## Related:
