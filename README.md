@@ -238,6 +238,46 @@ while 1:
 ```   
 We should have 2 blinking LEDs.
 
+## Bootloaders again:
+
+While we are on a roll recompiling, can we after all the misgivings above 
+get a "proper" circuitpython bootloader?
+
+Go back to the ubunti VM.
+
+```
+git clone https://github.com/adafruit/uf2-samdx1
+cd uf2-sandx1
+make all BOARD=zero
+```
+We now have built the bootloader, in several formats, for the arduino zero. How easy was that?
+
+Is it good for our board? Pretty close. But let's clone that "zero" profile, 
+and correct the user LED to the right pin 
+for our Samd21 Mini.
+Duplicate .../boards/zero folder to ../boards/samd21mini. 
+There are only two configuration files in there.
+Correct the led:  ```#define LED_PIN PIN_PA27```. Undefine both LED_TX_PIN and LED_RX_PIN
+(although those seem not to be used anyway). 
+
+```
+make all BOARD=samd21mini
+```
+Now we have a UF2 bootloader customised slightly to match our board. Still really easy.
+
+But how to easily flash that to the board? Again, there is a dead-simple way. 
+One of the several formats the bootloader file is given to us in is an ".ino" one. 
+That's right, we go back to the Arduino IDE, and use that .ino file as the sketch. 
+Compile and load that (this is ordinary arduino stuff now). Bingo. UF2 bootloader installed.
+
+The new bootloader supports both 
+ - regular arduino sketch uploads ("bossac" / serial). So we lose no functionality.
+ - drag&drop or file copy to the new drive ("ZEROBOOT", or I renamed that to "SAMBOOT" in 
+ the config) that appears on the USB when the board is in bootloader flashing mode. This is for simple 
+ flashing of the circuitpython .uf2 file. This is the new functionality.
+ 
+
+ 
 ## Related:
 
 For my notes on the STM32F407VG with micropython, see https://github.com/BLavery/STM32F407VG-Micropython  
