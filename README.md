@@ -18,7 +18,7 @@ Another missing hardware connection is MCU pins PB22 and PB23, which on the full
 The obvious application types available are 
  - arduino sketch
  - circuitpython
- - manually set up toolchain with compiler & uploader
+ - manually set up toolchain/suite with compiler & uploader
 
 This set of notes looks at the first two of these. If you are doing your own suite, you are smart enough to not need these notes!
 
