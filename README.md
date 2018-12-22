@@ -5,11 +5,13 @@ Notes on using the Chinese $14 "SAMD21 M0-Mini" board. <img align="right" src="i
 
 This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible.
 
-In hardware, the Arduino's user LED on D13/PA17 is not fitted (see pic), although the PCB design seems to have intended it. A schematic image is attached above, amended to be as accurate as I believe. 
+In hardware, the Arduino's user LED on D13/PA17 is not fitted (see pic), although the PCB design seems to have intended it. A schematic image is attached above, amended to be as accurate as I believe. <img align="left" src="images/ss45.png">
 
-<img align="left" src="images/ss45.png">There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx ones are toggled (__in software__) when TX or RX data is happening. The arduino bootloader includes driver code to do this winking. Whether your application similarly drives these 2 Leds, "depends...". More on that below.
+There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx ones are toggled (__in software__) when TX or RX data is happening. The arduino bootloader includes driver code to do this winking. Whether your application similarly drives these 2 Leds, "depends...". More on that below.
 
 Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing).  
+
+## What software?
 
 The obvious application types available are 
  - arduino sketch
