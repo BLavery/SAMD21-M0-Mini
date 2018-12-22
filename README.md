@@ -3,7 +3,7 @@ Notes on using the Chinese $14 "SAMD21 M0-Mini" board. <img align="right" src="i
 
 ## Hardware:
 
-This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible.
+This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible board.
 
 <img align="left" src="images/ss45.png">In hardware, the Arduino's user LED on D13/PA17 is not fitted (see pic), although the PCB design seems to have intended it. A schematic image is attached above, amended to be as accurate as I believe. 
 
@@ -115,9 +115,9 @@ The regular "Serial" exists in software, but its pins PB22/PB23 are not availabl
 
 ## Adafruit's CircuitPython:
 
-CircuitPython is Adafruit's fork/variant of the MicroPython project for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)  
+CircuitPython is Adafruit's fork/variant of the MicroPython project specifically for the SAMD MCUs. (Use MicroPython on STM32 boards, and CircuitPython on SAMD boards.)  
 
-https://circuitpython.readthedocs.io/en/3.x/docs/index.html   
+Reference: https://circuitpython.readthedocs.io/en/3.x/docs/index.html   
 
 CircuitPython is supplied as a binary file that needs flashing once. Thereafter your ".py" scripts are loaded a different way. Therefore, the following once-off manual install of the binary of CircuitPython can, like a childbirth, be later forgotten.
 
@@ -126,8 +126,8 @@ If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive a
 But we have the arduino bootloader. Dragging a .dfu isn't available, but bossac, the serial transfer utility, is hidden away inside our Arduino IDE package. We can manually use that to flash the CircuitPython. We just need the ".bin" version of firmware not the usual ".dfu" format.  
 
 Reference:  https://learn.adafruit.com/welcome-to-circuitpython/non-uf2-installation   
-Don't believe the advice that you need to install bossac. We already have it! (Somewhere!)  
-And here is where I got the .bin image:  https://github.com/adafruit/circuitpython/releases/tag/3.1.1
+Don't believe the advice that you need to install bossac. We already have it! (Somewhere in the Arduino files!)  
+And here is where I fetched the .bin image from:  https://github.com/adafruit/circuitpython/releases/tag/3.1.1
 
 I have Linux Mint. Here is how I flashed:    
 Double-click Reset.    
@@ -137,14 +137,14 @@ In summary, this is just
 
 1. I deduced the full command and options by setting arduino to Preferences/Verbose during Upload, and doing a test sketch upload!  And by reading the help out of bossac.
 2. Note where I found my bossac utility in my Arduino install.  Use your own full path for your bossac.   
-3. Note the exact firmware ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the arduino zero bin version.
+3. Note the exact firmware ".bin" file I fetched from Adafruit and stowed on my PC. It's simply the bin version for arduino zero board.
 4. The -R at the end simply resets the MCU into run mode, without reset button.
 5. I let bossac auto-find its com port.
 
 I did it all again on Windows10. It looked like this:    
 ```C:\Users\Brian\Appdata\Local\Arduino15\packages\arduino\tools\bossac\1.7.0\bossac.exe -i -d -e -w -v adafruit-circuitpython-arduino_zero-3.1.1.bin -R```
 
-Wow. This board now thinks it's an arduino zero running circuitpython. __A CIRCUITPY drive appears__ at my PC. If I edit or drag a "main.py" file there, it will run.
+Wow. This board now thinks it's an arduino zero board running circuitpython. __A CIRCUITPY drive appears__ at my PC. If I edit or drag a "main.py" file there, it will run.
 
 Run a serial terminal on the PC. I use GTKTerm. The port for me was /dev/ttyACM0. Any baudrate. Hit enter, and __the python interpreter prompt appears__. Let's do some testing preparatory to making a simple "blink" script:
 ```
@@ -154,9 +154,9 @@ help(microcontroller.pin)
 
 led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
 ```
-FAIL. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
+FAIL. Try it. Read the error message. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
 
-With that restriction, we have Arduino Zero CircuitPython all up and running.
+With that restriction, we have CircuitPython all up and running on our "Arduino Zero" board.
 
 Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPython as often as you wish.
 
@@ -164,7 +164,7 @@ Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPy
 
 OK, so if we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
 
-It's actually not too difficult. Just a bit tech-y. My first attempt on my Debian Mint PC had a toolchain clash with stuff I had already (MicroPython recompiling!). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS.
+It's actually not too difficult. Just a bit tech-y. My first attempt on my usual Debian Mint PC had a toolchain clash with stuff I had already (MicroPython recompiling, or the Arduino toolchain?). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS. This was quicker and easier than fighting with my usual OS. And that ubuntu was given a recommend in the following reference.
 
 The detailed instructions from Adafruit are here: https://learn.adafruit.com/building-circuitpython, and my steps were:
 
@@ -183,7 +183,7 @@ make -C mpy-cross
 cd ports/atmel-samd
 make BOARD=arduino_zero
 ```
-Success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/__build-arduino_mini/firmware.bin__, and with the similar bossac call as above it flashed to the board OK.
+Instant success. The rebuilt (unchanged) Arduino Zero binary was in .../circuitpython/ports/atmel-samd/__build-arduino_mini/firmware.bin__, and with the similar bossac call as above it flashed to the board OK.
 
 This was all rather painless. (The hardest step was transferring the firmware.bin file back to my usual linux desktop for flashing!)
 
@@ -191,7 +191,7 @@ Now, to fork the arduino_mini board into a new one. I duplicated the folder ../p
 The 4 files in there I modified slightly to:  
  - remove CircuitPython's TX/RX indicator use of those 2 LEDs
  - give the 2 LEDs names: board.LED1 and board.LED2
- - rename as Samd21 Mini instead of Arduino Zero  
+ - rename board as Samd21 Mini instead of Arduino Zero  
  
 My version of these 4 files is available above. (So, for you, just copy that folder into place inside .../boards.) Positioned as before in .../ports/atmel-samd I compiled the new version:  
 ``` make samd21_mini ```    
@@ -199,7 +199,7 @@ The new firmware.bin in .../build-samd21_mini can be flashed using bossac as bef
 
 But you don't really need to recompile again. __I have placed a copy of the "samd21_mini" build above.__ It's still simply called firmware.bin.
 
-Start up the board and your serial terminal to talk with it, as before.  CTRL-C / Enter, or perhaps just Enter. See the list of pin named like this:  
+So, flash that firmware.bin file to the board with your bossac, as before. Start up the board into circuitpython, and your serial terminal to talk with it, all as before.  CTRL-C / Enter, or perhaps just Enter. See the list of pin named like this:  
 ```
 Press any key to enter the REPL. Use CTRL-D to reload.
 Adafruit CircuitPython 3.1.1-7-g3ace9ea9e-dirty on 2018-12-19; Samd21 Mini with samd21g18
@@ -218,7 +218,7 @@ Adafruit CircuitPython 3.1.1-7-g3ace9ea9e-dirty on 2018-12-19; Samd21 Mini with 
 >>> 
 >>> 
 ```   
-We now know how to address our pins. This agrees well with the pin labels on the hardware.
+We now know how to address our pins, including the LEDs. This agrees well with the pin labels on the hardware.
 
 Hello World: In the drive CIRCUITPY create this main.py:
 ```
@@ -238,7 +238,7 @@ while 1:
     time.sleep(1)
 
 ```   
-We should have 2 blinking LEDs.
+This time we should have 2 blinking LEDs.
 
 ## Bootloaders again:
 
@@ -252,9 +252,9 @@ git clone https://github.com/adafruit/uf2-samdx1
 cd uf2-sandx1
 make all BOARD=zero
 ```
-We now have built the bootloader, in several formats, for the arduino zero. How easy was that?
+In 3 commands we now have fetched and built the bootloader, in several formats, for the arduino zero. How easy was that?
 
-Is it good for our board? Pretty close. But let's clone that "zero" profile, 
+Is it good for our slightly variant board? Pretty close. But let's clone that "zero" profile, 
 and correct the user LED to the right pin for our Samd21 Mini.
 Duplicate .../boards/zero folder to ../boards/samd21mini. 
 There are only two configuration files in there.
@@ -267,12 +267,12 @@ make all BOARD=samd21mini
 Now we have a UF2 bootloader customised slightly to match our board. Still really easy.
 
 But how to easily flash that to the board? Again, there is a dead-simple way. 
-One of the several formats the bootloader file is given to us in is an ".ino" one. 
+One of the several formats they have given us for the bootloader file is an ".ino" one. 
 That's right, we go back to the Arduino IDE, and use that .ino file as the sketch. 
 Compile and load that (this is ordinary arduino stuff now). Bingo. UF2 bootloader installed.
 
 The new bootloader supports both 
- - regular arduino sketch uploads ("bossac" / serial). So we lose no functionality.
+ - regular arduino sketch uploads ("bossac" / serial). So we lose no functionality on the Arduino IDE side.
  - drag&drop or file copy to the new drive "ZEROBOOT" (or I renamed that to "SAM21BOOT" in 
  the config) that appears on the USB when the board is in bootloader flashing mode. This is for simple 
  flashing of the circuitpython .uf2 file. This is the new functionality.
