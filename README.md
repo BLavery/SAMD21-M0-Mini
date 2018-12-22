@@ -26,7 +26,7 @@ From the factory, the MCU chip's ROM-based bootloader seems to support writing t
 
 On the board as supplied, a bootloader __is__ installed in flash. It's an "arduino-zero compatible" board, so the arduino-SAMD bootloader is included. This allows programming your sketch by the USB port, and the Arduino IDE has drivers for that built in. Serial/bossac on either USB or UART TX/RX pins???
 
-But there is an alternative Adafruit bootloader more cleanly matched to Adafruit's circuitPython. The Adafruit UF2 flash bootloader allows an additional mode of reflashing, by simple file copy or drag to a flash drive.
+But there exists an alternative Adafruit bootloader more cleanly matched to Adafruit's circuitPython. The Adafruit UF2 flash bootloader allows an additional mode of reflashing, by simple file copy or drag to a flash drive.
 
 Need more info (I'm suggesting you __don't__) on getting these two bootloaders?
  - https://github.com/arduino/ArduinoCore-samd/tree/master/bootloaders/zero
