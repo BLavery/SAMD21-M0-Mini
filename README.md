@@ -257,7 +257,7 @@ and correct the user LED to the right pin for our Samd21 Mini.
 Duplicate .../boards/zero folder to ../boards/samd21mini. 
 There are only two configuration files in there.
 Correct the led:  ```#define LED_PIN PIN_PA27```. Undefine both LED_TX_PIN and LED_RX_PIN
-(although those seem not to be used anyway). 
+(although those seem not to be used in this bootloader anyway). 
 
 ```
 make all BOARD=samd21mini
