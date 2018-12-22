@@ -278,9 +278,9 @@ The new bootloader supports both
 New bootloader runs if no sketch or circuitpython is flashed, or if we double-click reset button. Assuming we used the corrected 
 bootloader with the correct LED pin, bootloader is indicated by a soft-pulsing user LED. And the SAMBOOT drive appears at my PC.
 
-Using the new bootloader, to cross over to circuitpython from arduino use, is as easy as just copying the circuitpython UF2 image file. (This is NOT the bootloader file.)
+Using the new bootloader, to cross over to circuitpython from arduino use, is as easy as just copying the circuitpython UF2 image file. (This is the firmware.uf2 from above.)
 
-That magic .INO file I compiled? That changes the bootloader? I have placed it above.
+That magic .INO file I compiled? That changes the bootloader to UF2 mode? __I have placed it above too. Look for update-bootloader-samd21mini-v2.0.0-adafruit.7-3-gc44317f.ino__
 
 When circuitpython starts, the CIRCUITPY drive and the REPL by serial terminal are available just like the harder way earlier.
 
