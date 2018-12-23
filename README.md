@@ -123,7 +123,7 @@ Reference: https://circuitpython.readthedocs.io/en/3.x/docs/index.html
 
 CircuitPython is supplied as a binary file that needs flashing once. Thereafter your ".py" scripts are loaded a different way. Therefore, the following once-off manual install of the binary of CircuitPython can, like a childbirth, be later forgotten.
 
-If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive appear on our PC, and drag the "firmware.dfu" of the circuitpython to the BOOT drive. Installed! 
+If we had Adafruit's bootloader, we could double-click reset, see a BOOT drive appear on our PC, and drag the "firmware.dfu" of the circuitpython engine to the BOOT drive. Installed! 
 
 But we have the arduino bootloader. Dragging a .dfu isn't available, but bossac, the serial transfer utility, is hidden away inside our Arduino IDE package. We can manually use that to flash the CircuitPython. We just need the ".bin" version of firmware not the usual ".dfu" format.  
 
@@ -153,7 +153,7 @@ Run a serial terminal on the PC. I use GTKTerm. The port for me was /dev/ttyACM0
 import board, microcontroller, digitalio
 help(board)
 help(microcontroller.pin)
-
+   
 led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
 ```
 FAIL. Try it. Read the error message. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
