@@ -11,7 +11,7 @@ There are still 3 LEDs fitted, a power Led and a TX and RX Led. The Rx and Tx on
 
 I propose that a user LED (or two?) is WAY more useful than TX/RX indicator LEDs. 
 
-Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing). This is no big deal.
+Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing, despite most Chinese advertisers still praising Arduino Zero's included debugger!). This is no big deal.
 
 ## What software?
 
