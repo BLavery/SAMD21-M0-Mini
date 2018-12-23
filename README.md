@@ -158,13 +158,13 @@ led1 = digitalio.DigitalInOut(microcontroller.pin.PB03)
 ```
 FAIL. Try it. Read the error message. We can see the microcontroller.pin.PB03 and PA27 of the 2 LEDs. But we can't access them. CircuitPython has them reserved as the winking TX/RX indicators. That's unfortunate. We now have no user LEDs available at all.   
 
-With that restriction, we have CircuitPython all up and running on our "Arduino Zero" board.
+If we accept that restriction, we have CircuitPython all up and running on our "Arduino Zero" board.
 
 Ever want to return to Arduino? Easy. you can jump from Arduino IDE to CircuitPython as often as you wish.
 
 ## Recompiling CircuitPython:
 
-OK, so if we want to tweak our CircuitPython package so the two LEDs are back under our control. Is it worth the effort?
+OK, so what if we want to tweak our CircuitPython package so the two LEDs are back under our control? Is it worth the effort?
 
 It's actually not too difficult. Just a bit tech-y. My first attempt on my usual Debian Mint PC had a toolchain clash with stuff I had already (MicroPython recompiling, or the Arduino toolchain?). So in short order, I fetched the ISO for Ubunto 18.04 and set it up as a VM in Virtualbox. A new clean OS. This was quicker and easier than fighting with my usual OS. And that ubuntu was given a recommend in the following reference.
 
