@@ -13,7 +13,7 @@ I propose that a user LED (or two?) is WAY more useful than TX/RX indicator LEDs
 
 Another missing hardware connection is MCU pins PB22 and PB23, which on the full-size real Arduino Zero are connected to onboard debug hardware (missing, despite most Chinese advertisers still blindly praising Arduino Zero's included debugger!). To us this is no big deal.
 
-There is a "ICSP" header, with pin assignments that look wrong for SPI. More to explore.
+There is a "ICSP" header, with pin assignments that look wrong on the schematic. I suspect the MISO pin on the header is really PA12, not D12. More to explore.
 
 ## What software?
 
