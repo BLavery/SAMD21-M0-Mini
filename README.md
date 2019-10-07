@@ -1,6 +1,9 @@
 # SAMD21 M0-Mini
 Notes on using the Chinese $14 "SAMD21 M0-Mini" board. <img align="right" src="images/mini.png">I've seen the brandings Wemos and RobotDyn. Also some under DIYmore.
 
+## 2019 - This is no longer being maintained by the original author.
+## Please feel free to fork, copy, adapt if you find it useable
+
 ## Hardware:
 
 This board in the "nano" sizing has an Atmel/MicroChip SAMD21G18 MCU, 32K ram, 256K flash, and is advertised as "Arduino Zero" compatible board.
