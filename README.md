@@ -95,6 +95,8 @@ A5  PB02
 
 (To be checked: I suspect there might be a numbering issue on pins of ICSP connector. I haven't worked out why there is a ICSP connector on this board anyway, exc to give access to spare MCU SPI pins. I'm missing something?)
 
+ERRATUM: Added April 2022.
+
 <img align="right" src="images/err.png">
 
 If you want to use Arduino's terminal (ie serial via the USB connector), it's done like this:
